@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/addTable"
-        android:name="com.example.mytea.AddTable"
+        android:name="com.example.mytea.fragments.AddTable"
         android:label="fragment_add_table"
         tools:layout="@layout/fragment_add_table" >
         <action
@@ -64,7 +64,7 @@
     </fragment>
     <fragment
         android:id="@+id/productManager"
-        android:name="com.example.mytea.ProductManager"
+        android:name="com.example.mytea.fragments.ProductManager"
         android:label="fragment_product_manager"
         tools:layout="@layout/fragment_product_manager" >
         <action
@@ -79,7 +79,7 @@
     </fragment>
     <fragment
         android:id="@+id/addProduct"
-        android:name="com.example.mytea.AddProduct"
+        android:name="com.example.mytea.fragments.AddProduct"
         android:label="fragment_add_product"
         tools:layout="@layout/fragment_add_product" >
         <action
@@ -97,7 +97,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateProduct"
-        android:name="com.example.mytea.UpdateProduct"
+        android:name="com.example.mytea.fragments.UpdateProduct"
         android:label="fragment_update_product"
         tools:layout="@layout/fragment_update_product" >
         <action
@@ -160,17 +160,6 @@
         <argument
             android:name="currentOrder"
             app:argType="com.example.mytea.models.Order" />
-        <action
-            android:id="@+id/action_orderInfo_to_blankFragment"
-            app:destination="@id/blankFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/blankFragment"
-        android:name="com.example.mytea.BlankFragment"
-        android:label="fragment_blank"
-        tools:layout="@layout/fragment_blank" >
-        <action
-            android:id="@+id/action_blankFragment_to_orderInfo"
-            app:destination="@id/orderInfo" />
-    </fragment>
+
 </navigation>

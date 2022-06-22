@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mytea.OrderViewModel
-import com.example.mytea.R
+import com.example.mytea.data.OrderViewModel
 import com.example.mytea.data.adapters.OrderAdapter
 import com.example.mytea.databinding.FragmentOrderManagerBinding
 
@@ -19,7 +18,7 @@ class OrderManager : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding=FragmentOrderManagerBinding.inflate(layoutInflater)
 
 
@@ -32,6 +31,7 @@ class OrderManager : Fragment() {
         viewModel.orders.observe(viewLifecycleOwner){
             adapter.setData(it)
         }
+        activity?.title="Quản Lí Đơn Hàng"
         return binding.root
     }
 }

@@ -28,4 +28,6 @@ class ProductViewModel(application: Application):AndroidViewModel(application) {
             productDao.updateProduct(product)
         }
     }
+
+    fun searchProduct(query: String) : LiveData<List<Product>> =productDao.searchProduct("%$query%")
 }

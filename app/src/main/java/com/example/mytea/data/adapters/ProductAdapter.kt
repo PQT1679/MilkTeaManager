@@ -1,27 +1,16 @@
 package com.example.mytea.data.adapters
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.LiveData
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mytea.MainActivity
-import com.example.mytea.ProductManager
-import com.example.mytea.ProductManagerDirections
+import com.example.mytea.fragments.ProductManagerDirections
 import com.example.mytea.R
-import com.example.mytea.data.dao.OrderDetailsDao
-import com.example.mytea.data.database.MyDatabase
-import com.example.mytea.fragments.FragmentOrderDetails
 import com.example.mytea.fragments.FragmentOrderDetailsDirections
-import com.example.mytea.fragments.PlaceOrder
-import com.example.mytea.models.Order
-import com.example.mytea.models.OrderDetails
 import com.example.mytea.models.Product
-import com.example.mytea.models.Table
 
 
 class ProductAdapter: RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
@@ -51,8 +40,8 @@ class ProductAdapter: RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
         val currentItem = productList[position]
         holder.product_img.setImageBitmap(currentItem.Image)
         holder.product_name.text=currentItem.name
-        holder.product_price.text=holder.product_price.text.toString()+currentItem.Price.toString()+"$"
-        holder.product_quantity.text=holder.product_quantity.text.toString() +currentItem.Stock.toString()
+        holder.product_price.text="Giá"+currentItem.Price.toString()+"$"
+        holder.product_quantity.text="Hiện Có: " +currentItem.Stock.toString()
         holder.product.setOnClickListener {
             if(action==R.id.action_orderDetails_to_chooseProduct){
                 val newaction= FragmentOrderDetailsDirections.actionOrderDetailsToChooseProduct(currentItem)

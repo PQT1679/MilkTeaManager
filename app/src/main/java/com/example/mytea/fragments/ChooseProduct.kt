@@ -45,6 +45,7 @@ class ChooseProduct : Fragment() {
             val action = ChooseProductDirections.actionChooseProductToPlaceOrder(Table(-1))
             findNavController().navigate(action)
         }
+        activity?.title="Thêm Sản Phẩm"
         return binding.root
     }
 

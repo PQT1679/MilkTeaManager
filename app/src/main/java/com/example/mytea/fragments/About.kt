@@ -15,6 +15,7 @@ class About : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        activity?.title="Thông Tin"
         return inflater.inflate(R.layout.fragment_about, container, false)
     }
 

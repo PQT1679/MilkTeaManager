@@ -1,4 +1,4 @@
-package com.example.mytea
+package com.example.mytea.fragments
 
 import android.os.Bundle
 import android.text.Editable
@@ -26,7 +26,7 @@ class AddTable : Fragment() {
         binding.button.setOnClickListener {
             insertData()
         }
-
+        activity?.title="Thêm Bàn"
         return binding.root
     }
 

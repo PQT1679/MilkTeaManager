@@ -14,4 +14,7 @@ interface TableDao {
     suspend fun addTable(table: Table)
     @Query("SELECT * FROM `table` ORDER BY tableId ASC")
     fun getAllTable() : LiveData<List<Table>>
+
+    @Query("SELECT * FROM `table` WHERE tableId LIKE :searchQuery ORDER BY tableId ASC")
+    fun searchTables(searchQuery: String): LiveData<List<Table>>
 }

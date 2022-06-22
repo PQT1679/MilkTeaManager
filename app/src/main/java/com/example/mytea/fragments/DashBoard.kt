@@ -31,6 +31,7 @@ class DashBoard : Fragment() {
         binding.dashboardAbout.setOnClickListener {
             findNavController().navigate(R.id.action_dashBoard_to_about)
         }
+        activity?.title="QTEA"
         return binding.root
     }
 

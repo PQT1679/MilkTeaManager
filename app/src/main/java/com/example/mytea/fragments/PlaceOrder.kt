@@ -67,6 +67,7 @@ class PlaceOrder : Fragment() {
                 binding.placeOrderEmptyCart.isVisible=true
             }
         }
+        activity?.title="Thông Tin Đơn Hàng"
         return binding.root
     }
 

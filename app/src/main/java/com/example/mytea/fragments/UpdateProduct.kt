@@ -1,4 +1,4 @@
-package com.example.mytea
+package com.example.mytea.fragments
 
 import android.app.Activity
 import android.content.Intent
@@ -45,6 +45,7 @@ class UpdateProduct : Fragment() {
         binding.btnEditProduct.setOnClickListener {
             updateProduct()
         }
+        activity?.title="Cập Nhật Sản Phẩm"
         return binding.root
     }
 

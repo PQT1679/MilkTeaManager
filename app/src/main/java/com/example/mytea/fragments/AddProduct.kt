@@ -1,19 +1,15 @@
-package com.example.mytea
+package com.example.mytea.fragments
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.ImageDecoder
-import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Bundle
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.Nullable
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -44,6 +40,7 @@ class AddProduct : Fragment() {
         binding.btnAddProduct.setOnClickListener {
             insertProduct()
         }
+        activity?.title="Thêm Sản Phẩm"
         return binding.root
     }
 

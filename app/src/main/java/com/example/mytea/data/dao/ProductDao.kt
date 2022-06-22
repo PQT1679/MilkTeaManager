@@ -15,4 +15,7 @@ interface ProductDao {
 
     @Query("SELECT * FROM product ORDER BY ProductID ASC")
     fun getAllProduct(): LiveData<List<Product>>
+
+    @Query("SELECT * FROM product WHERE name LIKE :query ORDER BY ProductID ASC")
+    fun searchProduct(query: String):LiveData<List<Product>>
 }

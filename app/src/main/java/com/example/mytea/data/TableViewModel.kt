@@ -24,4 +24,5 @@ class TableViewModel(application: Application):AndroidViewModel(application) {
         }
     }
     fun getTablesData(): LiveData<List<Table>> = readAllTables
+    fun searchTables(query: String):LiveData<List<Table>> =tableDao.searchTables("%$query%")
 }

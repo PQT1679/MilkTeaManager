@@ -1,11 +1,10 @@
 package com.example.mytea.fragments
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -25,17 +24,15 @@ import com.example.mytea.databinding.FragmentOrderDetailsBinding
 import com.example.mytea.databinding.FragmentTablesBinding
 
 
-class FragmentOrderDetails : Fragment() {
+class FragmentOrderDetails : Fragment(),SearchView.OnQueryTextListener {
     private lateinit var binding: FragmentOrderDetailsBinding
     private lateinit var viewModel: ProductViewModel
-    private val sharedOrderViewModel: SharedOrderViewModel by activityViewModels()
+    val adapter = ProductAdapter()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentOrderDetailsBinding.inflate(layoutInflater)
-
-        val adapter = ProductAdapter()
         adapter.setaction(R.id.action_orderDetails_to_chooseProduct)
         val recycleview = binding.productToChoose
         recycleview.adapter = adapter
@@ -44,8 +41,37 @@ class FragmentOrderDetails : Fragment() {
         viewModel.getAllProduct().observe(viewLifecycleOwner, Observer { tables->
             adapter.setData(tables)
         })
-
+        setHasOptionsMenu(true)
+        activity?.title="Chọn Sản Phẩm"
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.tables_menu,menu)
+        val search = menu?.findItem(R.id.table_search)
+        val searchView = search.actionView as? SearchView
+        searchView?.isSubmitButtonEnabled= true
+        searchView?.setOnQueryTextListener(this)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        if (query!=null){
+            searchData(query)
+        }
+        return true
+    }
+
+    private fun searchData(query: String) {
+        viewModel.searchProduct(query).observe(viewLifecycleOwner){
+            adapter.setData(it)
+        }
+    }
+
+    override fun onQueryTextChange(query: String?): Boolean {
+        if (query!=null){
+            searchData(query)
+        }
+        return true
     }
 
 }
