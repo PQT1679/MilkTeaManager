@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">MyTea</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="status_0">Pending</string>
+    <string name="status_1">Confirmed</string>
+    <string name="status_2">Done</string>
+    <string name="status_n1">Canceled</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="order_manager">Quản Lí Đơn Hàng</string>
+    <string name="doanh_thu">Doanh Thu</string>
+    <string name="about_details">Thành Viên Nhóm: Phan Quang Thắng \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tNguyễn Thị Hoàng Anh\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tLê Thị Trang
+    </string>
+</resources>

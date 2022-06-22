@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashBoard">
+
+    <fragment
+        android:id="@+id/tables"
+        android:name="com.example.mytea.fragments.Tables"
+        android:label="fragment_tables"
+        tools:layout="@layout/fragment_tables" >
+        <action
+            android:id="@+id/action_tables_to_placeOrder"
+            app:destination="@id/placeOrder" />
+        <action
+            android:id="@+id/action_tables_to_addTable"
+            app:destination="@id/addTable" />
+        <action
+            android:id="@+id/action_tables_to_dashBoard"
+            app:destination="@id/dashBoard" />
+    </fragment>
+    <fragment
+        android:id="@+id/placeOrder"
+        android:name="com.example.mytea.fragments.PlaceOrder"
+        android:label="fragment_place_order"
+        tools:layout="@layout/fragment_place_order" >
+        <action
+            android:id="@+id/action_placeOrder_to_tables"
+            app:destination="@id/tables" />
+        <argument
+            android:name="currentTable"
+            app:argType="com.example.mytea.models.Table" />
+        <action
+            android:id="@+id/action_placeOrder_to_orderDetails"
+            app:destination="@id/orderDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/addTable"
+        android:name="com.example.mytea.AddTable"
+        android:label="fragment_add_table"
+        tools:layout="@layout/fragment_add_table" >
+        <action
+            android:id="@+id/action_addTable_to_tables"
+            app:destination="@id/tables" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashBoard"
+        android:name="com.example.mytea.fragments.DashBoard"
+        android:label="fragment_dash_board"
+        tools:layout="@layout/fragment_dash_board" >
+        <action
+            android:id="@+id/action_dashBoard_to_tables"
+            app:destination="@id/tables" />
+        <action
+            android:id="@+id/action_dashBoard_to_productManager"
+            app:destination="@id/productManager" />
+        <action
+            android:id="@+id/action_dashBoard_to_about"
+            app:destination="@id/about" />
+        <action
+            android:id="@+id/action_dashBoard_to_orderManager"
+            app:destination="@id/orderManager" />
+    </fragment>
+    <fragment
+        android:id="@+id/productManager"
+        android:name="com.example.mytea.ProductManager"
+        android:label="fragment_product_manager"
+        tools:layout="@layout/fragment_product_manager" >
+        <action
+            android:id="@+id/action_productManager_to_addProduct"
+            app:destination="@id/addProduct" />
+        <action
+            android:id="@+id/action_productManager_to_dashBoard"
+            app:destination="@id/dashBoard" />
+        <action
+            android:id="@+id/action_productManager_to_updateProduct"
+            app:destination="@id/updateProduct" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProduct"
+        android:name="com.example.mytea.AddProduct"
+        android:label="fragment_add_product"
+        tools:layout="@layout/fragment_add_product" >
+        <action
+            android:id="@+id/action_addProduct_to_productManager"
+            app:destination="@id/productManager" />
+    </fragment>
+    <fragment
+        android:id="@+id/about"
+        android:name="com.example.mytea.fragments.About"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" >
+        <action
+            android:id="@+id/action_about_to_dashBoard"
+            app:destination="@id/dashBoard" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateProduct"
+        android:name="com.example.mytea.UpdateProduct"
+        android:label="fragment_update_product"
+        tools:layout="@layout/fragment_update_product" >
+        <action
+            android:id="@+id/action_updateProduct_to_productManager"
+            app:destination="@id/productManager" />
+        <argument
+            android:name="currentProduct"
+            app:argType="com.example.mytea.models.Product" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetails"
+        android:name="com.example.mytea.fragments.FragmentOrderDetails"
+        android:label="fragment_order_details"
+        tools:layout="@layout/fragment_order_details" >
+        <action
+            android:id="@+id/action_orderDetails_to_placeOrder"
+            app:destination="@id/placeOrder" />
+        <argument
+            android:name="currentTable"
+            app:argType="com.example.mytea.models.Table" />
+        <action
+            android:id="@+id/action_orderDetails_to_chooseProduct"
+            app:destination="@id/chooseProduct" />
+    </fragment>
+    <fragment
+        android:id="@+id/chooseProduct"
+        android:name="com.example.mytea.fragments.ChooseProduct"
+        android:label="fragment_choose_product"
+        tools:layout="@layout/fragment_choose_product" >
+        <action
+            android:id="@+id/action_chooseProduct_to_orderDetails"
+            app:destination="@id/orderDetails" />
+        <action
+            android:id="@+id/action_chooseProduct_to_placeOrder"
+            app:destination="@id/placeOrder" />
+        <argument
+            android:name="currentProduct"
+            app:argType="com.example.mytea.models.Product" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderManager"
+        android:name="com.example.mytea.fragments.OrderManager"
+        android:label="fragment_order_manager"
+        tools:layout="@layout/fragment_order_manager" >
+        <action
+            android:id="@+id/action_orderManager_to_dashBoard"
+            app:destination="@id/dashBoard" />
+        <action
+            android:id="@+id/action_orderManager_to_orderInfo"
+            app:destination="@id/orderInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderInfo"
+        android:name="com.example.mytea.fragments.OrderInfo"
+        android:label="fragment_order_info"
+        tools:layout="@layout/fragment_order_info" >
+        <action
+            android:id="@+id/action_orderInfo_to_orderManager"
+            app:destination="@id/orderManager" />
+        <argument
+            android:name="currentOrder"
+            app:argType="com.example.mytea.models.Order" />
+        <action
+            android:id="@+id/action_orderInfo_to_blankFragment"
+            app:destination="@id/blankFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="com.example.mytea.BlankFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_blank" >
+        <action
+            android:id="@+id/action_blankFragment_to_orderInfo"
+            app:destination="@id/orderInfo" />
+    </fragment>
+</navigation>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/detail_item_img"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:padding="@dimen/product_img_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_image" />
+
+    <TextView
+        android:id="@+id/detail_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:text="Tên Sản Phẩm"
+        android:textSize="@dimen/product_info"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/detail_item_img"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/detail_item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="serif"
+        android:text="Giá sản phẩm"
+        android:textSize="@dimen/product_info"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/detail_item_img"
+        app:layout_constraintTop_toBottomOf="@+id/detail_item_name" />
+
+    <TextView
+        android:id="@+id/detail_item_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="serif"
+        android:text="Số Lương Mua"
+        android:textSize="@dimen/product_info"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/detail_item_img"
+        app:layout_constraintTop_toBottomOf="@+id/detail_item_price" />
+
+    <TextView
+        android:id="@+id/detail_item_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:text="Thành Tiền"
+        android:textSize="@dimen/product_info"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/detail_item_img"
+        app:layout_constraintTop_toBottomOf="@+id/detail_item_quantity" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/order_item_table"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Bàn: "
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_orderid" />
+
+    <TextView
+        android:id="@+id/order_time_placeorder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thời Gian đặt Hàng"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/order_btn_show_orderdetails"
+        app:layout_constraintStart_toEndOf="@+id/order_orderid"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/order_btn_show_orderdetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chi Tiết"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:iconPadding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/order_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trạng Thái:"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/order_btn_show_orderdetails"
+        app:layout_constraintStart_toEndOf="@+id/order_item_table"
+        app:layout_constraintTop_toBottomOf="@+id/order_time_placeorder" />
+
+    <TextView
+        android:id="@+id/order_totalmoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tổng: "
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/order_btn_show_orderdetails"
+        app:layout_constraintStart_toEndOf="@+id/order_item_table"
+        app:layout_constraintTop_toBottomOf="@+id/order_status" />
+
+    <TextView
+        android:id="@+id/order_orderid"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Mã Đơn: #"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

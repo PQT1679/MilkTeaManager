@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.DashBoard">
+
+    <ImageView
+        android:id="@+id/product_manage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:clickable="true"
+        android:contentDescription="Quản lí Sản phẩm"
+        android:padding="@dimen/padding"
+        android:src="@drawable/ic_product"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/store"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:clickable="true"
+        android:contentDescription="Tạo Đơn Hàng"
+        android:padding="@dimen/padding"
+        android:src="@drawable/ic_store"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/order_manage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:clickable="true"
+        android:contentDescription="Order Manage"
+        android:padding="@dimen/padding"
+        android:src="@drawable/ic_order_manage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/store_text" />
+
+    <TextView
+        android:id="@+id/store_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="200dp"
+        android:text="Tạo Đơn Hàng"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/store" />
+
+    <TextView
+        android:id="@+id/order_manage_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="200dp"
+        android:text="@string/order_manager"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order_manage" />
+
+    <TextView
+        android:id="@+id/dashboard_about_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="200dp"
+        android:text="Về Chúng Tôi"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dashboard_about" />
+
+    <TextView
+        android:id="@+id/product_manage_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="200dp"
+        android:text="Quản lí Sản Phẩm"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_manage" />
+
+    <ImageView
+        android:id="@+id/dashboard_about"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:clickable="true"
+        android:contentDescription="@string/doanh_thu"
+        android:padding="@dimen/padding"
+        android:src="@drawable/ic_baseline_info_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/product_manage_text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
