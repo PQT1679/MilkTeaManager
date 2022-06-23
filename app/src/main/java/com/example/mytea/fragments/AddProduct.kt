@@ -10,9 +10,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.example.mytea.R
 import com.example.mytea.data.ProductViewModel
 import com.example.mytea.databinding.FragmentAddProductBinding
 import com.example.mytea.models.Product
@@ -44,17 +48,38 @@ class AddProduct : Fragment() {
         return binding.root
     }
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val callback = object : OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.action_addProduct_to_productManager)
+            }
+
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,callback)
+    }
+
     private fun insertProduct() {
+
         val productname = binding.productName.text.toString()
         val productimg:Bitmap =  bitmap
         val productprice = binding.productPrice.text
         val quantity = binding.productQuantityText.text
-        Toast.makeText(requireContext(),"${productname.isEmpty()} hihi ${productprice.isEmpty()} hihi ${quantity.isEmpty()} ",Toast.LENGTH_SHORT).show()
         if (!productname.isEmpty() && !productprice.isEmpty() && !quantity.isEmpty() ){
 
             val product = Product(productname,productimg,productprice.toString().toDouble() ,Integer.parseInt(quantity.toString())  )
-//            Toast.makeText(requireContext(),"${product.toString()}",Toast.LENGTH_SHORT).show()
-            viewModel.addProduct(product)
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setPositiveButton("Xác Nhận"){_,_->
+                Toast.makeText(requireContext(),"Thêm Sản Phẩm ${productname} Thành Công",Toast.LENGTH_LONG).show()
+                findNavController().navigate(R.id.action_addProduct_to_productManager)
+                viewModel.addProduct(product)
+            }
+            builder.setNegativeButton("Hủy Bỏ"){_,_ ->}
+            builder.setTitle("Thêm Sản Phẩm ")
+            builder.setMessage("Xác Nhận Thêm Sản Phẩm ${productname} ")
+            builder.create().show()
+
         }
     }
 

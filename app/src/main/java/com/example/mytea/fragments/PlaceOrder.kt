@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -42,7 +43,7 @@ class PlaceOrder : Fragment() {
         sharedOrderViewModel.setData(args.currentTable)
         binding.addOrderDetails.setOnClickListener {
                 val currenttable = args.currentTable
-                val action = PlaceOrderDirections.actionPlaceOrderToOrderDetails(currenttable)
+                    val action = PlaceOrderDirections.actionPlaceOrderToOrderDetails(currenttable)
             findNavController().navigate(action)
         }
 
@@ -58,7 +59,7 @@ class PlaceOrder : Fragment() {
                 adapter.setData(sharedOrderViewModel.orderDetails.value!!)
                 binding.btnPlaceOrder.isVisible = true
                 binding.btnPlaceOrder.setOnClickListener {
-                    sharedOrderViewModel.placeOrder()
+                    placeOrder()
                 }
                 binding.placeOrderEmptyCart.isVisible=false
             } else {
@@ -89,6 +90,18 @@ class PlaceOrder : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,callback)
     }
 
+    private fun placeOrder(){
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("Xác Nhận"){_,_->
+            sharedOrderViewModel.placeOrder()
+            Toast.makeText(requireContext(),"Successfully Place Order",Toast.LENGTH_LONG).show()
+            findNavController().navigate(R.id.action_placeOrder_to_tables)
+        }
+        builder.setNegativeButton("Hủy Bỏ"){_,_ ->}
+        builder.setTitle("Xác Nhận Đặt Hàng")
+        builder.setMessage("Tạo Đơn Hàng Với Tổng Tiền: ${sharedOrderViewModel.order.value?.total}$")
+        builder.create().show()
+    }
 
     override fun onStart() {
         super.onStart()

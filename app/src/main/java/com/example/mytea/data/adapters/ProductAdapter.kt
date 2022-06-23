@@ -40,7 +40,7 @@ class ProductAdapter: RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
         val currentItem = productList[position]
         holder.product_img.setImageBitmap(currentItem.Image)
         holder.product_name.text=currentItem.name
-        holder.product_price.text="Giá"+currentItem.Price.toString()+"$"
+        holder.product_price.text="Giá: "+currentItem.Price.toString()+"$"
         holder.product_quantity.text="Hiện Có: " +currentItem.Stock.toString()
         holder.product.setOnClickListener {
             if(action==R.id.action_orderDetails_to_chooseProduct){

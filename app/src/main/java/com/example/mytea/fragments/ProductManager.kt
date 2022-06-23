@@ -2,6 +2,7 @@ package com.example.mytea.fragments
 
 import android.os.Bundle
 import android.view.*
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -48,6 +49,17 @@ class ProductManager : Fragment(),SearchView.OnQueryTextListener {
         val searchView = search.actionView as? SearchView
         searchView?.isSubmitButtonEnabled= true
         searchView?.setOnQueryTextListener(this)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val callback = object : OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.action_productManager_to_dashBoard)
+            }
+
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,callback)
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {

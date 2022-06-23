@@ -18,4 +18,7 @@ interface OrderDetailsDao {
 
     @Query("SELECT * FROM `OrderDetails` WHERE orderId=:orderID ORDER BY detailID ASC")
     fun getDetailbyOrder(orderID : Int): LiveData<List<OrderDetails>>
+
+    @Query("UPDATE `product` SET Stock= Stock-1 WHERE ProductID=1")
+    fun updateStock()
 }

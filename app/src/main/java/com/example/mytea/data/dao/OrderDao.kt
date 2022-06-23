@@ -15,7 +15,7 @@ interface OrderDao{
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addOrder(order: Order):Long
 
-    @Query("SELECT * FROM `Order` ORDER BY orderId ASC")
+    @Query("SELECT * FROM `Order` ORDER BY orderId DESC")
     fun getAllOrder() : LiveData<List<Order>>
 
     @Query("UPDATE `order` SET status = -1 WHERE orderId = :orderId")
@@ -23,4 +23,5 @@ interface OrderDao{
 
     @Query("UPDATE `order` SET status = 1 WHERE orderId = :orderId")
     suspend fun doneOrder(orderId: Int)
+
 }
