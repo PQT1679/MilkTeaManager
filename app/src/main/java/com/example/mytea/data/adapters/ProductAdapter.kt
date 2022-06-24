@@ -38,6 +38,7 @@ class ProductAdapter: RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val currentItem = productList[position]
+
         holder.product_img.setImageBitmap(currentItem.Image)
         holder.product_name.text=currentItem.name
         holder.product_price.text="Giá: "+currentItem.Price.toString()+"$"

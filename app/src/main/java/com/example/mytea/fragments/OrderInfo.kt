@@ -32,13 +32,20 @@ class OrderInfo : Fragment() {
         detailViewModel = ViewModelProvider(this)[OrderDetailsViewModel::class.java]
 
         viewModel=ViewModelProvider(this)[OrderViewModel::class.java]
-
         val adapter = OrderDetailsAdapter()
         val recyclerView = binding.orderinfoRecyclerview
         recyclerView.adapter=adapter
         recyclerView.layoutManager=LinearLayoutManager(requireContext())
-        detailViewModel.getDetailbyOrder(args.currentOrder.orderId).observe(viewLifecycleOwner){
-            adapter.setData(it as MutableList<OrderDetails>)
+        detailViewModel.getDetailbyOrder(args.currentOrder.orderId).observe(viewLifecycleOwner){details->
+            adapter.setData(details as MutableList<OrderDetails>)
+            if(details.isNotEmpty()){
+                binding.orderinfoBtnCanceled.setOnClickListener {
+                    cancelOrder()
+                }
+                binding.orderinfoBtnConfirm.setOnClickListener {
+                    doneOrder(details)
+                }
+            }
         }
         binding.orderinfoTotal.text = "Tổng Tiền: "+args.currentOrder.total+"$"
         if (args.currentOrder.status !=0){
@@ -50,22 +57,22 @@ class OrderInfo : Fragment() {
                 else->"Đơn Hàng Đã Bị Hủy"
             }
         }
-        else{
-            binding.orderinfoBtnCanceled.setOnClickListener {
-                cancelOrder()
-            }
-            binding.orderinfoBtnConfirm.setOnClickListener {
-                doneOrder()
-            }
-        }
+//        else{
+//            binding.orderinfoBtnCanceled.setOnClickListener {
+//                cancelOrder()
+//            }
+//            binding.orderinfoBtnConfirm.setOnClickListener {
+//                doneOrder()
+//            }
+//        }
         activity?.title="Thông Tin Đơn Hàng"
         return binding.root
     }
-    private fun doneOrder(){
+    private fun doneOrder(details: MutableList<OrderDetails>) {
         val builder = AlertDialog.Builder(requireContext())
         builder.setPositiveButton("Xác Nhận"){_,_->
             Toast.makeText(requireContext(),"Successfully",Toast.LENGTH_LONG).show()
-            viewModel.doneOrder(args.currentOrder.orderId)
+            viewModel.doneOrder(args.currentOrder.orderId,details)
             findNavController().navigate(R.id.action_orderInfo_to_orderManager)
         }
         builder.setNegativeButton("Hủy Bỏ"){_,_ ->}

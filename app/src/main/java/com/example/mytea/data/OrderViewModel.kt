@@ -16,11 +16,13 @@ import kotlinx.coroutines.launch
 class OrderViewModel(application: Application):AndroidViewModel(application) {
     private val _orders: LiveData<List<Order>>
     private val orderDao:OrderDao
+    private val orderDetailsDao: OrderDetailsDao
 
     val orders:LiveData<List<Order>> get() = _orders
     init {
         orderDao=MyDatabase.getDatabase(application).orderDao()
         _orders=orderDao.getAllOrder()
+        orderDetailsDao = MyDatabase.getDatabase(application).orderDetailsDao()
     }
 
 
@@ -31,9 +33,15 @@ class OrderViewModel(application: Application):AndroidViewModel(application) {
 
     }
 
-    fun doneOrder(orderId: Int) {
+    fun doneOrder(orderId: Int, details: MutableList<OrderDetails>) {
         viewModelScope.launch(Dispatchers.IO) {
             orderDao.doneOrder(orderId)
+            if (details.size > 0) {
+                for (item in details){
+                    orderDetailsDao.updateStock(item.product.ProductID,item.amount)
+                }
+            }
+
         }
     }
 }

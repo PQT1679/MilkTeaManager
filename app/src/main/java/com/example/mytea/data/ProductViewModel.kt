@@ -24,7 +24,7 @@ class ProductViewModel(application: Application):AndroidViewModel(application) {
     }
     fun getAllProduct():LiveData<List<Product>> =Products
     fun updateProduct(product: Product){
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             productDao.updateProduct(product)
         }
     }

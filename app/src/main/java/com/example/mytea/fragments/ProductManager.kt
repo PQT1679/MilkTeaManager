@@ -29,13 +29,11 @@ class ProductManager : Fragment(),SearchView.OnQueryTextListener {
         }
 
 
-
-
         val recycleview = binding.viewProducts
         recycleview.adapter = adapter
         recycleview.layoutManager = LinearLayoutManager(requireContext())
 
-        viewModel = ViewModelProvider(this).get(ProductViewModel::class.java)
+        viewModel = ViewModelProvider(this)[ProductViewModel::class.java]
         viewModel.getAllProduct().observe(viewLifecycleOwner
         ) { products -> adapter.setData(products) }
         activity?.title="Quản Lí Sản Phẩm"
