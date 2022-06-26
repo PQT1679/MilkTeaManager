@@ -45,11 +45,11 @@ class ProductAdapter: RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
         holder.product_quantity.text="Hiện Có: " +currentItem.Stock.toString()
         holder.product.setOnClickListener {
             if(action==R.id.action_orderDetails_to_chooseProduct){
-                val newaction= FragmentOrderDetailsDirections.actionOrderDetailsToChooseProduct(currentItem)
+                val newaction= FragmentOrderDetailsDirections.actionOrderDetailsToChooseProduct(currentItem.ProductID)
                 holder.itemView.findNavController().navigate(newaction)
             }
             else{
-                val newaction = ProductManagerDirections.actionProductManagerToUpdateProduct(currentItem)
+                val newaction = ProductManagerDirections.actionProductManagerToUpdateProduct(currentItem.ProductID)
                 holder.itemView.findNavController().navigate(newaction)
             }
 

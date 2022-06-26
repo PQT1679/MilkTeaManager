@@ -29,5 +29,7 @@ class ProductViewModel(application: Application):AndroidViewModel(application) {
         }
     }
 
+    fun getProductbyId(ProductId: Int) = productDao.getProductbyId(ProductId)
+
     fun searchProduct(query: String) : LiveData<List<Product>> =productDao.searchProduct("%$query%")
 }

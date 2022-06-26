@@ -57,14 +57,6 @@ class OrderInfo : Fragment() {
                 else->"Đơn Hàng Đã Bị Hủy"
             }
         }
-//        else{
-//            binding.orderinfoBtnCanceled.setOnClickListener {
-//                cancelOrder()
-//            }
-//            binding.orderinfoBtnConfirm.setOnClickListener {
-//                doneOrder()
-//            }
-//        }
         activity?.title="Thông Tin Đơn Hàng"
         return binding.root
     }

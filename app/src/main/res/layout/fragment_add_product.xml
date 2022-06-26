@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Tên Sản Phẩm"
-        android:inputType="textPersonName"
+        android:inputType="textNoSuggestions"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"

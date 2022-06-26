@@ -82,4 +82,5 @@ class Tables : Fragment(),SearchView.OnQueryTextListener {
             adapter.setData(it)
         }
     }
+
 }

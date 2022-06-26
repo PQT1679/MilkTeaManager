@@ -13,6 +13,8 @@ import com.example.mytea.models.Order
 
 class OrderAdapter:RecyclerView.Adapter<OrderAdapter.OrderViewHolder>() {
     private var orders = emptyList<Order>()
+
+
     class OrderViewHolder(itemView:View):RecyclerView.ViewHolder(itemView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
